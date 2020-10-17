@@ -21,7 +21,7 @@ public class GamesController {
         this.gamesService = gamesService;
     }
 
-    @PostMapping("/getgames")
+    @PostMapping("/games")
     public ResponseEntity<List<Games>> getGames() {
         gamesService.findAll()
                         .forEach(System.out::println);
