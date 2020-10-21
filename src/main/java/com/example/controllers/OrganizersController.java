@@ -7,6 +7,7 @@ import com.example.service.OrganizersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,11 +23,16 @@ public class OrganizersController {
         this.organizersService = organizersService;
     }
 
-    @PostMapping("/organizers")
-    public ResponseEntity<List<Organizers>> getGames(@RequestParam(defaultValue = "0") int idGame) {
+    @GetMapping("/organizers")
+    public ResponseEntity<List<Organizers>> getGames(@RequestParam/*(defaultValue = "0")*/ int idGame) {
         organizersService.findAllByIdGame(idGame)
                 .forEach(System.out::println);
-        return new ResponseEntity<>(organizersService.findAllByIdGame(idGame), HttpStatus.OK);
+        List<Organizers> organizers = organizersService.findAllByIdGame(idGame);
+        if (organizers.isEmpty()) {
+            return new ResponseEntity<>(organizers, HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(organizers, HttpStatus.OK);
+        }
     }
 
 }
