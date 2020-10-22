@@ -8,47 +8,88 @@
 script = ExtResource( 2 )
 
 [node name="CameraSpatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraSpatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 fov = 90.0
 
-[node name="UI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Ui_camera" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -1020.0
+margin_bottom = 580.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn_nextAnim" type="Button" parent="UI"]
-margin_left = 2.0
-margin_top = 4.0
-margin_right = 140.0
-margin_bottom = 24.0
+[node name="btn_resetCamera" type="Button" parent="Ui_camera"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -65.0
+margin_bottom = 65.0
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="slider_cameraMove" type="VSlider" parent="Ui_camera"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -178.5
+margin_bottom = 178.5
+min_value = 1.0
+max_value = 7.0
+step = 0.01
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="UI_anim" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -182.5
+margin_top = -60.0
+margin_right = 182.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slider_speedAnim" type="HSlider" parent="UI_anim"]
+margin_right = 365.0
+margin_bottom = 16.0
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="Control" parent="UI_anim"]
+margin_top = 20.0
+margin_right = 365.0
+margin_bottom = 20.0
+
+[node name="btn_nextAnim" type="Button" parent="UI_anim/buttons"]
+margin_right = 175.0
+margin_bottom = 40.0
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn_prevAnim" type="Button" parent="UI"]
-margin_left = 2.0
-margin_top = 34.5
-margin_right = 140.0
-margin_bottom = 54.5
+[node name="btn_prevAnim" type="Button" parent="UI_anim/buttons"]
+margin_left = 190.0
+margin_right = 365.0
+margin_bottom = 40.0
 text = "Prev"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="slider_speedAnim" type="HSlider" parent="UI"]
-margin_left = 3.0
-margin_top = 69.0
-margin_right = 140.0
-margin_bottom = 85.0
-min_value = 0.1
-max_value = 10.0
-step = 0.1
-value = 2.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
