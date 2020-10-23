@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Theme2.tres" type="Theme" id=2]
+[ext_resource path="res://Theme1.tres" type="Theme" id=3]
+[ext_resource path="res://ScriptNode.gd" type="Script" id=4]
+
+[node name="Node" type="Node"]
+script = ExtResource( 4 )
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchor_top = 0.462
+anchor_right = 0.72
+anchor_bottom = 0.489
+margin_left = 265.0
+margin_top = -170.04
+margin_right = 321.4
+margin_bottom = -139.88
+rect_scale = Vector2( 0.7, 0.7 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+anchor_top = 0.462
+anchor_right = 0.72
+anchor_bottom = 0.489
+margin_left = 265.0
+margin_top = -67.04
+margin_right = 321.4
+margin_bottom = -36.8799
+rect_scale = Vector2( 0.7, 0.7 )
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnRegistration" type="Button" parent="."]
+margin_left = 470.0
+margin_top = 1230.0
+margin_right = 720.0
+margin_bottom = 1280.0
+theme = ExtResource( 3 )
+text = "Регистрация"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnEnter" type="Button" parent="."]
+margin_left = 470.0
+margin_top = 1020.0
+margin_right = 720.0
+margin_bottom = 1070.0
+theme = ExtResource( 3 )
+text = "Войти"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnForgotPas" type="Button" parent="."]
+margin_left = 470.0
+margin_top = 1080.0
+margin_right = 720.0
+margin_bottom = 1130.0
+theme = ExtResource( 3 )
+text = "Забыли пароль?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 451.335
+margin_top = 944.166
+margin_right = 491.335
+margin_bottom = 975.166
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PasswordLabel" type="Label" parent="."]
+margin_left = 265.0
+margin_top = 785.0
+margin_right = 415.0
+margin_bottom = 816.0
+theme = ExtResource( 3 )
+text = "Пароль
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginLabel" type="Label" parent="."]
+anchor_right = 0.149
+anchor_bottom = 0.021
+margin_left = 265.0
+margin_top = 680.0
+margin_right = 254.08
+margin_bottom = 670.68
+theme = ExtResource( 3 )
+text = "Логин"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BtnRegistration" to="." method="_on_BtnRegistration_pressed"]
+[connection signal="pressed" from="BtnEnter" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="BtnForgotPas" to="." method="_on_BtnForgotPas_pressed"]
