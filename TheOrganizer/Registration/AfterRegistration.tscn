@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Themes & Fonts/Theme1.tres" type="Theme" id=1]
+[ext_resource path="res://Registration/AfterRegistration.gd" type="Script" id=2]
+
+
+
+[node name="Node" type="Node"]
+script = ExtResource( 2 )
+
+[node name="LblMessage" type="Label" parent="."]
+margin_left = 11.8285
+margin_top = 550.0
+margin_right = 1070.83
+margin_bottom = 581.0
+theme = ExtResource( 1 )
+text = "Благодарим за регистрацию! Все данные для дальнейшей авторизации высланы на указанную Вами почту."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnBackToLogin" type="Button" parent="."]
+margin_left = 400.0
+margin_top = 681.113
+margin_right = 652.0
+margin_bottom = 718.113
+theme = ExtResource( 1 )
+text = "Вернуться к меню входа"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BtnBackToLogin" to="." method="_on_BtnBackToLogin_pressed"]
