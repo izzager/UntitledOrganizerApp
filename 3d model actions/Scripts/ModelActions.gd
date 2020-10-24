@@ -6,20 +6,23 @@ var pause = false
 var animating = false
 var curAnim
 var back = false
-onready var AnimPlayer = get_child(0).get_node("AnimationPlayer")
-onready var animLen = AnimPlayer.get_animation_list().size()
+onready var AnimPlayer
+onready var animLen
+onready var allNodes = get_parent()
 
 
 func _ready():
-	#Подключение всех функций с элементоми
-	connectAll()
+	#Если модель загружена подключение всех функций с элементоми
+	allNodes.connect("loadEnd", self, "connectAll")
 	
 	
 func connectAll():
+	#Получаем плеер и количество анимаций
+	AnimPlayer = allNodes.get_node("Model").get_children()[0].get_node("AnimationPlayer")
+	animLen = AnimPlayer.get_animation_list().size()
 	#Конец аниммации вызывает animEnd
 	AnimPlayer.connect("animation_finished", self, "animEnd")
 	#Получение основного узла
-	var allNodes = get_parent()
 	#Требование след анимации вызывает nextAnim
 	allNodes.connect("nextAnim", self, "nextAnim")
 	allNodes.get_node("UI_anim/buttons/btn_nextAnim").connect("pressed", self, "nextAnim")
