@@ -17,7 +17,7 @@ func _ready():
 	slider_cameraMove.connect("value_changed", self, "cameraZoom")
 	slider_cameraMove.value = cameraMove.translation.z
 	#Добавляем загружаемую модель
-	var box = preload("res://Scenes/box2.tscn").instance()
+	var box = preload("res://box2.tscn").instance()
 	box.translation = Vector3(0,0,0)
 	get_node("Model").add_child(box)
 	#подаём об этом сигнал
