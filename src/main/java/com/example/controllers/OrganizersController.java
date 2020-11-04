@@ -24,7 +24,7 @@ public class OrganizersController {
     }
 
     @GetMapping("/organizers")
-    public ResponseEntity<List<Organizers>> getGames(@RequestParam/*(defaultValue = "0")*/ int idGame) {
+    public ResponseEntity<List<Organizers>> getOrganizers(@RequestParam(value = "idGame") int idGame) {
         organizersService.findAllByIdGame(idGame)
                 .forEach(System.out::println);
         List<Organizers> organizers = organizersService.findAllByIdGame(idGame);

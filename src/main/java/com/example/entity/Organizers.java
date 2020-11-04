@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="organizers")
@@ -23,14 +24,6 @@ public class Organizers {
 
     public String getUrlImage() { return urlImage; }
 
-    public void setId(int id) { this.id = id; }
-
-    public void setIdGame(int idGame) { this.idGame = idGame; }
-
-    public void setNameOrg(String nameOrg) { this.nameOrg = nameOrg; }
-
-    public void setUrlImage(String urlImage) { this.urlImage = urlImage; }
-
     @Override
     public String toString() {
         return "Organizers{" +
@@ -39,5 +32,21 @@ public class Organizers {
                 ", nameOrg='" + nameOrg + '\'' +
                 ", urlImage='" + urlImage + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Organizers that = (Organizers) o;
+        return id == that.id &&
+                idGame == that.idGame &&
+                Objects.equals(nameOrg, that.nameOrg) &&
+                Objects.equals(urlImage, that.urlImage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, idGame, nameOrg, urlImage);
     }
 }
