@@ -18,4 +18,9 @@ public class OrganizersService implements IOrganizersService {
     public List<Organizers> findAllByIdGame(int idGame) {
         return organizerRepository.findAllByIdGame(idGame);
     }
+
+    @Override
+    public List<Organizers> findAll() {
+        return organizerRepository.findAll();
+    }
 }

@@ -11,37 +11,25 @@ public class Games {
     private int id;
 
     //@Column
-    private String game_name;
+    private String gameName;
 
     //@Column
-    private String url_image;
+    private String urlImage;
 
     public Games() { }
 
     public int getId() { return id; }
 
-    public String getGame_name() { return game_name; }
+    public String getGame_name() { return gameName; }
 
-    public String getUrl_image() { return url_image; }
-
-    public void setGame_name(String game_name) {
-        this.game_name = game_name;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setUrl_image(String url_image) {
-        this.url_image = url_image;
-    }
+    public String getUrl_image() { return urlImage; }
 
     @Override
     public String toString() {
         return "Games{" +
                 "id=" + id +
-                ", game_name='" + game_name + '\'' +
-                ", url_image='" + url_image + '\'' +
+                ", game_name='" + gameName + '\'' +
+                ", url_image='" + urlImage + '\'' +
                 '}';
     }
 
@@ -51,12 +39,12 @@ public class Games {
         if (o == null || getClass() != o.getClass()) return false;
         Games games = (Games) o;
         return id == games.id &&
-                Objects.equals(game_name, games.game_name) &&
-                Objects.equals(url_image, games.url_image);
+                Objects.equals(gameName, games.gameName) &&
+                Objects.equals(urlImage, games.urlImage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, game_name, url_image);
+        return Objects.hash(id, gameName, urlImage);
     }
 }

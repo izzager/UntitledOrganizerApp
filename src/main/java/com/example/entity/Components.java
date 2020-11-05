@@ -32,14 +32,6 @@ public class Components {
 
     public String getUrlComponent() { return urlComponent; }
 
-    public void setId(int id) { this.id = id; }
-
-    public void setIdOrganizer(int idOrganizer) { this.idOrganizer = idOrganizer; }
-
-    public void setNameComponent(String nameComponent) { this.nameComponent = nameComponent; }
-
-    public void setUrlComponent(String urlComponent) { this.urlComponent = urlComponent; }
-
     @Override
     public String toString() {
         return "Components{" +

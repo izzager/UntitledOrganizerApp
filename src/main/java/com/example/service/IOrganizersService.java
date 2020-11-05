@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IOrganizersService {
     List<Organizers> findAllByIdGame(int idGame);
+    List<Organizers> findAll();
 }

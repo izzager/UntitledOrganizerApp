@@ -30,6 +30,12 @@ public class Users {
 
     public String getUsername() { return username; }
 
+    public void setLogin(String login) { this.login = login; }
+
+    public void setPass(String pass) { this.pass = pass; }
+
+    public void setUsername(String username) { this.username = username; }
+
     @Override
     public String toString() {
         return "Users{" +
