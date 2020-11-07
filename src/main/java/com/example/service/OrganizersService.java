@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrganizersService implements IOrganizersService {
@@ -22,5 +23,10 @@ public class OrganizersService implements IOrganizersService {
     @Override
     public List<Organizers> findAll() {
         return organizerRepository.findAll();
+    }
+
+    @Override
+    public Optional<Organizers> findByNameOrgAndIdGame(String nameOrg, Integer idGame) {
+        return organizerRepository.findByNameOrgAndIdGame(nameOrg, idGame);
     }
 }

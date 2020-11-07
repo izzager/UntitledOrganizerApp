@@ -52,7 +52,6 @@ public class GameOrganizersController {
             }
             response.get(gameName).add(org);
         }
-        //System.out.println(response);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
