@@ -3,11 +3,13 @@ extends Spatial
 export(float, 1, 5, 0.1) var animSpeed
 var anim = 0
 var pause = false
+var pauseBtn = false
 var animating = false
 var curAnim
 var back = false
 onready var AnimPlayer
 onready var animLen
+onready var btnPause
 onready var allNodes = get_parent()
 
 
@@ -24,16 +26,18 @@ func connectAll():
 	AnimPlayer.connect("animation_finished", self, "animEnd")
 	#Получение основного узла
 	#Требование след анимации вызывает nextAnim
-	allNodes.connect("nextAnim", self, "nextAnim")
-	allNodes.get_node("UI_anim/buttons/btn_nextAnim").connect("pressed", self, "nextAnim")
+	allNodes.connect("nextAnim", self, "AnimNext")
+	allNodes.get_node("UI_anim/Hbox_Anim/btn_AnimNext").connect("pressed", self, "AnimNext")
 	#Требование пред анимации вызывает prevAnim
-	allNodes.connect("prevAnim", self, "prevAnim")
-	allNodes.get_node("UI_anim/buttons/btn_prevAnim").connect("pressed", self, "prevAnim")
+	allNodes.connect("prevAnim", self, "AnimPrev")
+	allNodes.get_node("UI_anim/Hbox_Anim/btn_AnimPrev").connect("pressed", self, "AnimPrev")
 	#Получение слайдера для скорости и связка его изменения с изменением скорости анимации
-	var slider_speedAnim = allNodes.get_node("UI_anim/slider_speedAnim")
+	var slider_speedAnim = allNodes.get_node("UI_anim/slider_AnimSpeed")
 	slider_speedAnim.connect("value_changed", self, "speedChange")
 	#Установка стартового значения в стартовую позицию слайдера
 	slider_speedAnim.value = animSpeed
+	btnPause = allNodes.get_node("UI_anim/Hbox_Anim/btn_AnimPause")
+	btnPause.connect("pressed", self, "AnimPause")
 	
 	
 func speedChange(value):
@@ -48,8 +52,7 @@ func animEnd(_animName):
 	#при конце анимации отпускаем паузу
 	pause = false
 
-
-func nextAnim():
+func AnimNext():
 	#если не пвуза и может быть совершена следующая анимация
 	if not pause and anim < animLen:
 		#увеличиваем шаг анимации
@@ -63,7 +66,7 @@ func nextAnim():
 		#делаем паущу
 		pause = true
 
-func prevAnim():
+func AnimPrev():
 	#если не пвуза и может быть совершен шаг назад
 	if not pause and anim > 0:
 		#последний шаг идёт назад
@@ -74,3 +77,15 @@ func prevAnim():
 		AnimPlayer.playback_speed = 0
 		#сдвигаем на предылущий шаг
 		anim -= 1
+
+func AnimPause():
+	print("SUCK")
+	if !pauseBtn:
+		pauseBtn = true
+		AnimPlayer.playback_speed = 0
+		btnPause.text = "Play"
+	else:
+		pauseBtn = false
+		AnimPlayer.playback_speed = animSpeed
+		btnPause.text = "Pause"
+	

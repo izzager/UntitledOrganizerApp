@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Spatial.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/ModelActions.gd" type="Script" id=3]
 
-[node name="Spatial" type="Spatial"]
+[sub_resource type="Environment" id=1]
+background_mode = 3
+background_color = Color( 0.67451, 0.796078, 0.639216, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[node name="Spatial" type="WorldEnvironment"]
+environment = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="CameraSpatial" type="Spatial" parent="."]
@@ -14,37 +20,78 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 fov = 90.0
 
 [node name="Ui_camera" type="Control" parent="."]
-anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -1020.0
-margin_top = 1.68179
-margin_bottom = 581.682
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="Ui_camera"]
+margin_right = 65.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 65, 65 )
+text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn_resetCamera" type="Button" parent="Ui_camera"]
+[node name="VBox_TopRight" type="VBoxContainer" parent="Ui_camera"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -65.0
+margin_bottom = 134.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_Settings" type="Button" parent="Ui_camera/VBox_TopRight"]
+margin_right = 65.0
 margin_bottom = 65.0
+rect_min_size = Vector2( 65, 65 )
+text = "Gear"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_CameraReset" type="Button" parent="Ui_camera/VBox_TopRight"]
+margin_top = 70.0
+margin_right = 65.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 65, 65 )
 text = "Reset"
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="slider_cameraMove" type="VSlider" parent="Ui_camera"]
+[node name="VBox_Zoom" type="VBoxContainer" parent="Ui_camera"]
 anchor_left = 1.0
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -178.5
-margin_bottom = 178.5
-min_value = 1.0
-max_value = 7.0
-step = 0.01
-value = 1.0
+anchor_bottom = 1.0
+margin_left = -75.0001
+margin_top = -135.0
+rect_min_size = Vector2( 75, 125 )
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_ZoomOut" type="Button" parent="Ui_camera/VBox_Zoom"]
+margin_right = 75.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 65, 65 )
+text = "ZoomOut"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="btn_ZoomIn" type="Button" parent="Ui_camera/VBox_Zoom"]
+margin_top = 70.0
+margin_right = 75.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 65, 65 )
+text = "ZoomIn"
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -54,15 +101,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -182.5
-margin_top = -60.0
-margin_right = 182.5
+margin_left = -186.5
+margin_top = -85.0
+margin_right = 186.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="slider_speedAnim" type="HSlider" parent="UI_anim"]
-margin_right = 365.0
+[node name="slider_AnimSpeed" type="HSlider" parent="UI_anim"]
+margin_right = 373.0
 margin_bottom = 16.0
 min_value = 0.1
 max_value = 5.0
@@ -72,25 +119,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="buttons" type="Control" parent="UI_anim"]
+[node name="Hbox_Anim" type="HBoxContainer" parent="UI_anim"]
 margin_top = 20.0
-margin_right = 365.0
-margin_bottom = 20.0
+margin_right = 373.0
+margin_bottom = 85.0
 
-[node name="btn_nextAnim" type="Button" parent="UI_anim/buttons"]
-margin_top = 4.0
-margin_right = 175.0
-margin_bottom = 44.0
+[node name="btn_AnimNext" type="Button" parent="UI_anim/Hbox_Anim"]
+margin_right = 150.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 150, 65 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn_prevAnim" type="Button" parent="UI_anim/buttons"]
-margin_left = 188.0
-margin_top = 4.0
-margin_right = 363.0
-margin_bottom = 44.0
+[node name="btn_AnimPause" type="Button" parent="UI_anim/Hbox_Anim"]
+margin_left = 154.0
+margin_right = 219.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 65, 65 )
+text = "Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_AnimPrev" type="Button" parent="UI_anim/Hbox_Anim"]
+margin_left = 223.0
+margin_right = 373.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 150, 65 )
 text = "Prev"
 __meta__ = {
 "_edit_use_anchors_": false
