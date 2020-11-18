@@ -5,15 +5,13 @@ import com.example.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/users")
 public class UsersController {
     private final UsersService usersService;
 
@@ -22,12 +20,13 @@ public class UsersController {
         this.usersService = usersService;
     }
 
-    @GetMapping("/users")
+    @GetMapping("")
     public ResponseEntity<List<Users>> getUsers() {
+        System.out.println(usersService.findAll());
         return new ResponseEntity<>(usersService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/users/findByLoginAndPass")
+    @PostMapping("/findByLoginAndPass")
     public ResponseEntity<Users> getUsers(@RequestParam String login,
                                           @RequestParam String pass) {
         Optional<Users> user = usersService.findByLoginAndPass(login, pass);
