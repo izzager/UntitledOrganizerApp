@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsersService implements IUsersService, UserDetailsService {
+public class UsersService implements UserDetailsService {
     @Autowired
     public UsersRepository usersRepository;
 
@@ -22,7 +22,6 @@ public class UsersService implements IUsersService, UserDetailsService {
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Override
     public List<User> findAll() {
         return usersRepository.findAll();
     }

@@ -9,11 +9,7 @@ public class Games {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-    //@Column
     private String gameName;
-
-    //@Column
     private String urlImage;
 
     public Games() { }

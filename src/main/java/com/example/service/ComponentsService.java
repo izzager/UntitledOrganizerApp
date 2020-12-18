@@ -9,18 +9,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ComponentsService implements IComponentsService {
+public class ComponentsService {
     @Autowired
     public ComponentsRepository componentsRepository;
 
     public ComponentsService() {}
 
-    @Override
     public List<Components> findAll() {
         return componentsRepository.findAll();
     }
 
-    @Override
     public Optional<List<Components>> findAllByIdOrganizer(int idOrganizer) {
         return componentsRepository.findAllByIdOrganizer(idOrganizer);
     }

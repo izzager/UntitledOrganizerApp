@@ -9,18 +9,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class GamesService implements IGamesService {
+public class GamesService {
     @Autowired
     public GamesRepository gamesRepository;
 
     public GamesService() {}
 
-    @Override
     public List<Games> findAll() {
         return gamesRepository.findAll();
     }
 
-    @Override
     public Optional<Games> findByGameName(String gameName) {
         return gamesRepository.findByGameName(gameName);
     }
